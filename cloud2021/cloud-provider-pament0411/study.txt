@@ -1,0 +1,102 @@
+
+https://blog.csdn.net/Wind_biscuit/article/details/107587339
+
+spring cloud alibaba 学习资料整理: https://blog.csdn.net/star1210644725/article/details/104258330/
+
+SpringBoot 2.0 整合 Mybatis:https://blog.csdn.net/weixin_39483925/article/details/81199074
+
+相关集成
+
+1、druid 版本 druid-spring-boot-starter 1.1.17 
+
+注意相关配置（spring.datasource.druid.initialSize 之前低版本 spring.datasource.initialSize）
+
+此配置包含监控页面
+
+spring:
+  datasource:
+    url: jdbc:mysql://101.200.54.163:3306/ry-vue?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=GMT%2B8
+    username: root
+    password: neusoft@qaz
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    druid:
+      initialSize: 1
+      # 最小连接池数量
+      minIdle: 10
+      # 最大连接池数量
+      maxActive: 20
+      # 配置获取连接等待超时的时间
+      maxWait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      timeBetweenEvictionRunsMillis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      minEvictableIdleTimeMillis: 300000
+      # 配置一个连接在池中最大生存的时间，单位是毫秒
+      maxEvictableIdleTimeMillis: 900000
+      # 配置检测连接是否有效
+      validationQuery: SELECT 1 FROM DUAL
+      #aop-patterns: com.marchsoft.admin.* # 配置要扫描的包
+      filters: stat,wall # 配置监控防火墙
+
+      stat-view-servlet: # 开启了statViewServlet功能,也就是监控页的配置
+        enabled: true
+        login-username: admin
+        login-password: admin
+        resetEnable: false
+
+      web-stat-filter: # 监控web应用，开启web监控功能
+        enabled: true
+        urlPattern: /*
+        exclusions: '*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*'
+
+      filter:
+        stat:
+          slow-sql-millis: 1000 #设置所有超过1000行的查询都是慢查询
+          logSlowSql: true
+          enabled: true
+        wall: #开启防火墙的功能
+          enabled: true
+          config:
+            drop-table-allow: false
+
+-----------------------------------------------------------------------------------------------------------------------------------
+
+问题 在哪里设置基本参数 例如 initialSize，minIdle
+
+ druid-spring-boot-starter 在启动时 初始 DruidDataSourceWrapper 继承 DruidDataSource 在初始时执行 configFromPropety 获取配置 实例化数据源
+
+相关基础配置在 DruidDataSource中
+
+
+ 
+----------------------------------------------------------------------------------------------------------------------------------
+
+springboot 2.0 +
+
+使用com.mysql.cj.jdbc.Driver驱动
+
+数据库连接地址url后面要加时区 否则报错
+
+&serverTimezone=GMT%2B8
+
+=====================================================================================================================================
+mybatis
+ 
+相关配置
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.cloud.cloudproviderpament.entity
+
+相关其它参数 作用？
+
+
+--------------------------------------------------------------------------------------------------------------------------------------
+pagehelper
+
+使用
+
+---------------------------------------------------------------------------------------------------------------------------------------
+idea @Autowired mapper 报红 在Mapper 上加 @Repository 不报了 为啥？
+
+myabtis plus *
