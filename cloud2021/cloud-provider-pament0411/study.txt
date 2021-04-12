@@ -104,3 +104,4 @@ myabtis plus *
 
 controller @PathVariable
 mybatis 批量查询插入
+lombot
