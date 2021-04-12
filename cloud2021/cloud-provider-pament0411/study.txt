@@ -96,7 +96,11 @@ pagehelper
 
 使用
 
+
 ---------------------------------------------------------------------------------------------------------------------------------------
 idea @Autowired mapper 报红 在Mapper 上加 @Repository 不报了 为啥？
 
 myabtis plus *
+
+controller @PathVariable
+mybatis 批量查询插入
