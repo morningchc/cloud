@@ -89,19 +89,26 @@ mybatis:
   type-aliases-package: com.cloud.cloudproviderpament.entity
 
 相关其它参数 作用？
+ configuration:
+    mapUnderscoreToCamelCase: true # 开启驼峰命名转换法(听好用的)
+    cache-enabled: false
+    default-statement-timeout: 3000
 
 
 --------------------------------------------------------------------------------------------------------------------------------------
 pagehelper
 
-使用
+使用方式
 
 
 ---------------------------------------------------------------------------------------------------------------------------------------
 idea @Autowired mapper 报红 在Mapper 上加 @Repository 不报了 为啥？
 
-myabtis plus *
-
-controller @PathVariable
-mybatis 批量查询插入
-lombot
+------------------------------------------------------------------------------
+需要完善
+1、controller @PathVariable
+2、统一异常处理
+3、项目改造（entity提出）
+4、mybatis 批量查询插入
+5、lombot
+6、myabtis plus *
