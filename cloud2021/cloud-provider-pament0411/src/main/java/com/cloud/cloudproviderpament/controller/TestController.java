@@ -1,12 +1,12 @@
 package com.cloud.cloudproviderpament.controller;
 
 import com.alibaba.fastjson.JSON;
+import com.cloud.cloudproviderpament.common.CommonResult;
+import com.cloud.cloudproviderpament.common.CommonSearch;
 import com.cloud.cloudproviderpament.entity.PfCombElementEvent;
 import com.cloud.cloudproviderpament.service.TestService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,6 +19,17 @@ public class TestController {
     @Autowired
     private TestService testService;
 
+    @PostMapping("/testPost")
+    public CommonResult testPost(@RequestBody CommonSearch search){
+        CommonResult res = new CommonResult();
+        return res;
+    }
+
+    @PostMapping("/testList/{pageSize}/{pageIndex}")
+    public CommonResult testGet(@RequestBody CommonSearch search, @PathVariable int pageSize, @PathVariable int pageIndex){
+        CommonResult res = new CommonResult();
+        return res;
+    }
 
     @PostMapping("/selectTest")
     public String selectTest(){
@@ -30,6 +41,7 @@ public class TestController {
 
         return res;
     }
+
 
 }
 

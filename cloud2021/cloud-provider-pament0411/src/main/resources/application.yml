@@ -73,3 +73,7 @@ pagehelper:
   supportMethodsArguments: true
   params: count=countSql
   page-size-zero: true
+
+logging:
+  level:
+    com.cloud.cloudproviderpament.mapper: DEBUG
